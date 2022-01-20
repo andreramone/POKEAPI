@@ -1,0 +1,93 @@
+a {
+  color: var(--grey-400);
+  text-decoration: none;
+}
+
+/* .search {
+  width: 765px;
+  height: 54px;
+  background: #ffffff;
+  border: 1px solid #dee0e3;
+  box-sizing: border-box;
+  border-radius: 8px;
+  padding-left: 18px;
+} */
+
+.search-icon {
+  right: 0;
+  width: auto;
+  position: absolute;
+  margin-top: 19px;
+  margin-right: 19px;
+}
+
+.css-b62m3t-container {
+  box-sizing: border-box;
+  margin-top: 80px;
+  margin-left: 338px;
+  width: 765px;
+  background: #ffffff;
+  border: 1px solid #dee0e3;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+
+.container-card {
+  margin-top: 50px;
+  margin-left: 500px;
+  box-sizing: border-box;
+  display: flex;
+  width: 165px;
+  height: 236px;;
+  align-items: center;
+  justify-content: center;
+  background: #ffffff;
+  box-shadow: 0px 2px 16px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+}
+
+.fotopokemon {
+  position: absolute;
+  width: 56px;
+  height: 60px;
+}
+
+.pokename {
+  width: 144px;
+  height: 27px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 27px;
+  /* identical to box height */
+  color: #000000;
+}
+
+.pokeid {
+  margin-left: 10px;
+  width: 144px;
+  height: 20px;
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 13px;
+  line-height: 19px;
+  color: #8e8787;
+}
+
+.poketype1 {
+  margin-right: 5px;
+  width: 50.53px;
+  height: 20px;
+  background: green;
+  border-radius: 8px;
+}
+
+.detalhes {
+  margin-right: 5px;
+  width: 147px;
+  height: 32px;
+  background: #ffcb05;
+  border-radius: 8px;
+}

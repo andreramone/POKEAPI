@@ -1,0 +1,54 @@
+/* Rectangle 22 */
+
+.Rectangle22{
+position: absolute;
+width: 139px;
+height: 31px;
+left: 138px;
+top: 655px;
+
+/* Grey Scale / Grey-400 */
+
+border: 1px solid #4B4B4D;
+box-sizing: border-box;
+border-radius: 22px;
+}
+
+.tema-escuro{
+    /* Tema escuro */
+position: absolute;
+width: 79px;
+height: 18px;
+left: 180px;
+top: 661px;
+
+font-family: Poppins;
+font-style: normal;
+font-weight: 500;
+font-size: 12px;
+line-height: 18px;
+/* identical to box height */
+
+display: flex;
+align-items: center;
+
+/* Grey Scale / Grey-400 */
+
+color: #4B4B4D;
+}
+
+
+.logolua{
+    /* Vector */
+
+
+position: absolute;
+left: 7.74%;
+right: 0%;
+top: 0.02%;
+bottom: 0%;
+
+/* Grey Scale / Grey-400 */
+
+background: #4B4B4D;
+}
