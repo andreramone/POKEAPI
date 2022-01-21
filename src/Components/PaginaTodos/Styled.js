@@ -33,7 +33,10 @@ export const Container = styled.div`
     flex-direction: row;
     align-items: center;
     border-radius: 8px;
-    margin-top: 5%;
+    margin-top: 5%!important;
+    width: 100%;
+    flex-wrap: wrap;
+    margin: -10px;
 `;
 
 export const Pokemon = styled.div`
@@ -47,6 +50,7 @@ export const Pokemon = styled.div`
     padding:10px;
     margin-left:10px;
     align-items: flex-start;
+    margin: 10px;
 `;
 
 export const PokemonNumber = styled.div`

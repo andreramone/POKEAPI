@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Navbar from "../Navbar/Navbar";
 import api from "../../Services/api";
-import Select from "react-select";
 import Heart from "react-animated-heart";
 import styles from "./Paginatodos.css";
 import {
@@ -31,48 +30,41 @@ export default function Paginatodos() {
       const result = await api.get("pokemon");
       
       let pokemonsArr = await Promise.all(
-        result.data.results.map(async (e) => {
-          const singlePokemon = await getSinglePokemon(e.url);
-          // singlePokemon.data.types.map((types) => {
-          //   switch (types.type.name) {
-          //     case "grass":
-          //       types.type.color = "#00FF00";
-          //       break;
+        result.data.results.map(async (pkm) => {
+          const singlePokemon = await getSinglePokemon(pkm.url);
+          singlePokemon.data.types.map((types) => {
+            switch (types.type.name) {
+              case "grass":
+                return types.type.color = "#00FF00";
 
-          //     case "poison":
-          //       types.type.color = "#A64D79";
-          //       break;
+              case "poison":
+                return types.type.color = "#A64D79";
 
-          //     case "fire":
-          //       types.type.color = "#ff6600";
-          //       break;
+              case "fire":
+                return types.type.color = "#ff6600";
 
-          //     case "water":
-          //       types.type.color = "#3366ff";
-          //       break;
+              case "water":
+                return types.type.color = "#3366ff";
 
-          //     case "flying":
-          //       types.type.color = "#99ccff";
-          //       break;
+              case "flying":
+                return types.type.color = "#99ccff";
 
-          //     case "normal":
-          //       types.type.color = "#ff66ff";
-          //       break;
+              case "normal":
+                return types.type.color = "#ff66ff";
 
-          //     case "bug":
-          //       types.type.color = "#00ff00";
-          //       break;
-          //     default:
-          //       types.type.color = "#FFFFFf";
-          //       break;
-          //   }
-          // });
-          e.card = singlePokemon.data;
-          return e;
+              case "bug":
+                return types.type.color = "#00ff00";
+              default:
+                return types.type.color = "#FFFFFf";
+            }
+          });
+          pkm.card = singlePokemon.data;
+          return pkm;
         })
         );
+        
         setPokemons(pokemonsArr);
-        console.log(pokemons)
+        console.log(pokemons);
     }
     getPokemons();
   }, []);
@@ -82,7 +74,7 @@ export default function Paginatodos() {
       <Navbar />
       <div className="content">
         {pokemons.length > 0 && (
-          <Container>
+          <Container> 
             {pokemons.map((pokemon) => {
               return (
                 <Pokemon key={pokemon.name}>
@@ -104,12 +96,12 @@ export default function Paginatodos() {
                   </PokemonImgDiv>
                   <PokemonName>{pokemon.name}</PokemonName>
                   <PokemonNumber>ID:{pokemon.card.id}</PokemonNumber>
-                  {pokemon.card.types && (
+                  {pokemon.card.types.length > 0 && (
                     <PokemonTypes>
                       <Types>
-                        {pokemon.types.map((pokemonTypes) => (
-                          <Type color={pokemonTypes.card.type.color}>
-                            {pokemonTypes.card.type.name}
+                        {pokemon.card.types.map((pokemonTypes) => (
+                          <Type color={pokemonTypes.type.color}>
+                            {pokemonTypes.type.name}
                           </Type>
                         ))}
                       </Types>
