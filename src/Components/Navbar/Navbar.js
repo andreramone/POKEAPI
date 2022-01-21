@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styles from "./navbar.css";
 import { FaSignInAlt } from "react-icons/fa";
+import { logout } from "../../Services/auth";
 
 function Navbar() {
   return (
@@ -14,13 +15,15 @@ function Navbar() {
           <div className="container-links">
             <a href="/favoritos">Favoritos</a>
 
-            <a href="/Procurar">Procurar</a>
+            <a href="/procurar">Procurar</a>
 
-            <a href="/vertodos">Ver todos</a>
+            <a href="/todos">Ver todos</a>
           </div>
           <div className="sair">
-            <Link to="/">Sair</Link>
-            <FaSignInAlt/>
+            <Link to="/" onClick={(e) => logout()}>
+              Sair
+            </Link>
+            <FaSignInAlt />
           </div>
         </div>
       </nav>

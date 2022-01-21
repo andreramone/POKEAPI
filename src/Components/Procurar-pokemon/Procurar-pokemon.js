@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from "react";
-import styles from "../Procurar-pokemon/Procurar-pokemon.css";
 import Navbar from "../Navbar/Navbar";
-import { FaSearch } from "react-icons/fa";
 import api from "../../Services/api";
 import Select from "react-select";
-import cors from "cors";
 import Heart from "react-animated-heart";
-import { PokemonType } from "./Styled";
-import { hexToRgb } from "@mui/material";
+import styles from './Procurar-pokemon.css'
+import {
+  PokemonTypes,
+  Container,
+  Pokemon,
+  PokemonNumber,
+  PokemonName,
+  DetailsButton,
+  PokemonImg,
+  PokemonImgDiv,
+  Types,
+  Type,
+  HeartDiv,
+  HeartPosition
+} from "./Styled.js";
 
 export default function ProcurarPokemon() {
   const [pokemons, setPokemons] = useState([]);
@@ -20,10 +30,6 @@ export default function ProcurarPokemon() {
       setPokemons(result);
     });
   }, []);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-  };
 
   async function fetchSinglePokemon(e) {
     api.get(e.url).then((res) => {
@@ -65,11 +71,10 @@ export default function ProcurarPokemon() {
       setCard(fetchedPokemon);
     });
   }
-
   return (
     <>
       <Navbar />
-
+      <div className="content">
       <Select
         className=".css-b62m3t-container"
         onChange={(e) => fetchSinglePokemon(e)}
@@ -79,27 +84,39 @@ export default function ProcurarPokemon() {
       />
 
       {card && (
-        <div className="container-card">
-          <div className="fotopokemon">
-            <img src={card.sprites["front_default"]} alt="pokeimg"></img>
-          </div>
-          <div className="pokename">{card.name}</div>
-          <div className="pokeid">ID: {card.id}</div>
-          <div className="poke-types">
-            {card.types.map((types) => {
-              return (
-                <PokemonType key={types.type.name} color={types.type.color}>
-                  {types.type.name}
-                </PokemonType>
-              );
-            })}
-          </div>
-          <button href="/modal" className="detalhes">
-            Ver detalhes
-          </button>
-          <Heart isClick={isClick} onClick={() => setClick(!isClick)} />
-        </div>
-      )}
+        <Container>
+          <Pokemon>
+            <HeartDiv>
+              <HeartPosition>
+                <Heart isClick={isClick} onClick={() => setClick(!isClick)}/>
+              </HeartPosition>
+            </HeartDiv>
+            <PokemonImgDiv>
+              {card.sprites && (
+                <PokemonImg src={card.sprites["front_default"]} alt={`Imagem do pokémon ${card.name}`} />
+              )}
+            </PokemonImgDiv>
+            <PokemonName>{card.name}</PokemonName>
+            <PokemonNumber>ID:{card.id}</PokemonNumber>
+            {card.types && (
+              <PokemonTypes>
+                <Types>
+                  {card.types.map(pokemonTypes => (
+                    <Type color={pokemonTypes.type.color}>{pokemonTypes.type.name}</Type>
+                  ))}
+                </Types>
+              </PokemonTypes>
+            )
+            }
+            <DetailsButton>
+              <input type='button' value="Ver Detalhes" />
+            </DetailsButton>
+          </Pokemon>
+        </Container>
+
+      )
+      }
+      </div>
     </>
   );
 }

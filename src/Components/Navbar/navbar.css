@@ -10,7 +10,8 @@
 
 .container {
   align-items: center;
-  width: 960px;
+  max-width: 1165px;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   margin: auto;
